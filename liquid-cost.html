@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<style>
+
+</style>
+
+<title>Frothy Tools</title>
+
+<head>
+    <h1> Liquid Cost Calculator </h1>
+    <br><br>
+</head>
+
+<body>
+    
+    <form action="" method="get" class="total-cost"></form>
+    <div class = "total-cost">
+        <label for="cost">Total Cost: </label>
+        <input type="number" name="cost" id="cost">
+    </div>
+    <div class = "total-barrels">
+        <label for="barrels">Total Barrels: </label>
+        <input type="number" name="barrels" id="barrels">
+    </div>
+    <button id="calculate">Calculate</button>
+    <button id="clear">Clear</button>
+
+    
+    <div id="perOz"></div>
+    <div id="perPint"></div>
+    <div id="perSixtel"></div>
+    <div id="perHalf"></div>
+    <div id="perBarrel"></div>
+        
+</body>
+
+<script>
+
+
+
+
+const calculate = document.querySelector('#calculate');
+    calculate.addEventListener('click', () => {
+
+        //Per Ounce Cost
+        gallons = barrels.value * 31;
+        ounces = gallons * 128;
+        ounceCost = cost.value / ounces;
+        document.getElementById('perOz').innerHTML = "Per Ounce:  " + ounceCost.toFixed(2);
+
+        //Per Pint Cost
+        pints = ounces / 16;
+        pintCost = cost.value / pints;
+        document.getElementById('perPint').innerHTML = "Per Pint:  " + pintCost.toFixed(2);
+        
+        //Per Sixtel Cost
+        sixtels = barrels.value * 6;
+        sixtelCost = cost.value / sixtels;
+        document.getElementById('perSixtel').innerHTML = "Per Sixtel:  " + sixtelCost.toFixed(2);
+        
+        //Per Half Cost
+        halfs = barrels.value * 2;
+        halfCost = cost.value / halfs;
+        document.getElementById('perHalf').innerHTML = "Per Half:  " + halfCost.toFixed(2);
+
+        //Per Barrel Cost
+        perBarrel = cost.value / barrels.value;
+        document.getElementById('perBarrel').innerHTML = "Per Barrel:  " + perBarrel.toFixed(2);
+        
+    })
+
+   /* const clear = document.querySelector('#clear');
+        clear.addEventListener('click', () => {
+        var el = '#ozResults';
+        el.remove();*/
+
+    
+</script>
