@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <style>
-
+    h1{
+        position: relative;
+        display: auto;
+        text-align: center;
+    }
+    body{
+        position: relative;
+        display: auto;
+        text-align: left;
+    }
+    .base{
+        
+    }
 </style>
 
 <title>Frothy Tools</title>
@@ -17,20 +29,41 @@
         <label for="cost">Total Cost: </label>
         <input type="number" name="cost" id="cost">
     </div>
+    
+
+    <br>
     <div class = "total-barrels">
         <label for="barrels">Total Barrels: </label>
         <input type="number" name="barrels" id="barrels">
-    </div>
-    <button id="calculate">Calculate</button>
-    <button id="clear">Clear</button>
+    </div><br>
 
-    
-    <div id="perOz"></div>
-    <div id="perPint"></div>
-    <div id="perSixtel"></div>
-    <div id="perHalf"></div>
-    <div id="perBarrel"></div>
-        
+    <form>
+        <label for="single">Single Batch:</label>
+        <input type="radio" id="single" name="hours" value="6">
+   
+        <label for="triple">Triple Batch:</label>
+        <input type="radio" id="triple" name="hours" value="12">
+    </form><br>
+
+    <button id="calculate">Calculate</button>
+    <button id="clear">Clear</button><br><br>
+
+    <div class = "base">
+        <div id="perOz"></div>
+        <div id="12ozCan"></div>
+        <div id="perPint"></div>
+        <div id="perSixtel"></div>
+        <div id="perHalf"></div>
+        <div id="perBarrel"></div>
+    </div>
+
+    <div class = "labor">
+        <div id="lpOz"></div>
+        <div id="l12ozCan"></div>
+        <div id="lpPint"></div>
+        <div id="lpSixtel"></div>
+        <div id="lpHalf"></div>
+    </div>
 </body>
 
 <script>
@@ -45,7 +78,11 @@ const calculate = document.querySelector('#calculate');
         gallons = barrels.value * 31;
         ounces = gallons * 128;
         ounceCost = cost.value / ounces;
-        document.getElementById('perOz').innerHTML = "Per Ounce:  " + ounceCost.toFixed(2);
+        perOz.textContent = "Per Ounce:  " + ounceCost.toFixed(2);
+        //Per 12oz Can
+        cans = ounces / 12;
+        cansCost = cost.value / cans;
+        document.getElementById('12ozCan').innerHTML = "Per Can:  " + cansCost.toFixed(2);
 
         //Per Pint Cost
         pints = ounces / 16;
