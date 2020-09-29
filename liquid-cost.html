@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <style>
+    
     h1{
         position: relative;
         display: auto;
         text-align: center;
+        color: orange;
     }
     body{
+        background-color: blue;
         position: relative;
         display: auto;
         text-align: left;
     }
     .base{
+        color:orange;
         
     }
 </style>
@@ -26,24 +30,21 @@
     
     <form action="" method="get" class="total-cost"></form>
     <div class = "total-cost">
-        <label for="cost">Total Cost: </label>
-        <input type="number" name="cost" id="cost">
+        <label for="cost" style="color:orange">Total Cost: </label>
+        <input type="number" name="cost" id="cost"> 
     </div>
     
 
     <br>
     <div class = "total-barrels">
-        <label for="barrels">Total Barrels: </label>
+        <label for="barrels" style="color:orange">Total Barrels: </label>
         <input type="number" name="barrels" id="barrels">
     </div><br>
 
-    <form>
-        <label for="single">Single Batch:</label>
-        <input type="radio" id="single" name="hours" value="6">
-   
-        <label for="triple">Triple Batch:</label>
-        <input type="radio" id="triple" name="hours" value="12">
-    </form><br>
+    <div id="labor">      
+        <input type="radio" id="single" name="hours" value="6" > Single Batch
+        <input type="radio" id="triple" name="hours" value="12"> Triple Batch
+    </div> <br>
 
     <button id="calculate">Calculate</button>
     <button id="clear">Clear</button><br><br>
@@ -67,12 +68,24 @@
 </body>
 
 <script>
-
-
-
-
 const calculate = document.querySelector('#calculate');
+
+
     calculate.addEventListener('click', () => {
+
+       
+            var laborCost;
+                if(document.getElementById('single').checked){
+                    laborCost = document.getElementById('single').value;
+                    
+                }else if(document.getElementById('triple').checked){
+                    laborCost = document.getElementById('triple').value;
+                    
+                }
+            
+        
+
+        console.log(laborCost);
 
         //Per Ounce Cost
         gallons = barrels.value * 31;
